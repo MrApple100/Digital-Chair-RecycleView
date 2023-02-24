@@ -6,10 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mrapple100.recycleview.R;
 import com.mrapple100.recycleview.data.Card;
+import com.mrapple100.recycleview.databinding.AnimalcardBinding;
 
 import java.util.List;
 
@@ -25,15 +27,14 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalHold
     @NonNull
     @Override
     public AnimalHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.animalcard,parent,false);
-        return new AnimalHolder(itemView);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        AnimalcardBinding binding = AnimalcardBinding.inflate(inflater,parent,false);
+        return new AnimalHolder(binding.getRoot());
     }
 
     @Override
     public void onBindViewHolder(@NonNull AnimalHolder holder, int position) {
-        holder.Animal.setText(cards.get(position).animal);
-        holder.Name.setText(cards.get(position).Name);
-        holder.Age.setText(cards.get(position).age+"");
+        holder.binding.setAnimal(cards.get(position));
 
     }
 
@@ -43,14 +44,10 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalHold
     }
 
     class AnimalHolder extends RecyclerView.ViewHolder{
-        TextView Animal;
-        TextView Name;
-        TextView Age;
+        AnimalcardBinding binding;
         public AnimalHolder(@NonNull View itemView) {
             super(itemView);
-             Animal = itemView.findViewById(R.id.Animal);
-             Name = itemView.findViewById(R.id.Name);
-             Age = itemView.findViewById(R.id.Age);
+            binding = DataBindingUtil.bind(itemView);
 
         }
     }

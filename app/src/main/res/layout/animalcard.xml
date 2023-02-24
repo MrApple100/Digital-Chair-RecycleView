@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="animal"
+            type="com.mrapple100.recycleview.data.Card" />
+    </data>
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
     <TextView
-        android:id="@+id/Animal"
+        android:id="@+id/AnimalType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
+        android:text="@{animal.animal}"
         android:hint="Animal"
         android:textColorHint="@color/black">
     </TextView>
@@ -24,6 +32,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/purple_700"
+            android:text="@{animal.Name}"
             android:hint="Name"
             android:textColorHint="@color/purple_700">
         </TextView>
@@ -34,9 +43,12 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/purple_700"
+            android:text="@{String.valueOf(animal.age)}"
+
             android:hint="Age"
             android:textColorHint="@color/purple_200">
         </TextView>
     </LinearLayout>
 
 </LinearLayout>
+</layout>

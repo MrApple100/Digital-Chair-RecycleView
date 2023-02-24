@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         cards.add(new Card("B","I",10));
         cards.add(new Card("G","K",90));
         cards.add(new Card("T","A",93));
+        cards.add(new Card("AL","Z",20));
         RecyclerView recyclerView = findViewById(R.id.recycleview);
         recyclerView.setAdapter(new AnimalAdapter(cards));
     }
